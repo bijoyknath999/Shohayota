@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:layout_gravity="center"
+    android:padding="5dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:text="Save"
+        android:textSize="18sp"
+        android:textColor="@color/custom_color"
+        android:fontFamily="@font/roboto_medium"
+        android:background="@color/white"
+        android:textAllCaps="false"
+        android:id="@+id/toolbar_save_btn"/>
+
+</FrameLayout>

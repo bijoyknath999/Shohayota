@@ -18,72 +18,64 @@
         <ImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/logo"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/logo" />
 
-        <ProgressBar android:id="@+id/progressBar1"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="15dp"
-            android:layout_gravity="center"
-            android:minWidth="220dp" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            app:cardElevation="5dp"
-            app:cardCornerRadius="8dp"
             android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/custom_color2">
+            app:cardBackgroundColor="@color/custom_color2"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="5dp">
 
             <TextView
+                android:id="@+id/method_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/method_text"
-                android:text="Emergency Mode : Off"
-                android:textSize="16sp"
                 android:layout_gravity="center"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Emergency Mode : Off"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:fontFamily="@font/poppins_bold"/>
+                android:textSize="16sp" />
 
 
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:weightSum="2"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/emergency_mode"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                app:cardElevation="8dp"
-                app:cardCornerRadius="5dp"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
+                android:layout_weight="1"
                 app:cardBackgroundColor="@color/custom_color2"
-                android:id="@+id/emergency_mode">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="8dp">
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Emergency Mode"
-                    android:textSize="16sp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Emergency Mode"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_bold"/>
+                    android:textSize="16sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -91,21 +83,21 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/custom_color2">
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/custom_color2"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Chatbot Mode"
-                    android:textSize="16sp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Chatbot Mode"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_bold"/>
+                    android:textSize="16sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -114,32 +106,33 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:weightSum="2"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                app:cardElevation="8dp"
-                app:cardCornerRadius="5dp"
-                android:layout_weight="1"
+                android:id="@+id/app_settings"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/custom_color2">
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/custom_color2"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="8dp">
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="App Settings"
-                    android:textSize="16sp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="App Settings"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_bold"/>
+                    android:textSize="16sp" />
 
 
             </androidx.cardview.widget.CardView>
@@ -147,21 +140,21 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="1"
-                app:cardElevation="5dp"
-                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/custom_color2">
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/custom_color2"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="About App"
-                    android:textSize="16sp"
                     android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="About App"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/poppins_bold"/>
+                    android:textSize="16sp" />
 
 
             </androidx.cardview.widget.CardView>

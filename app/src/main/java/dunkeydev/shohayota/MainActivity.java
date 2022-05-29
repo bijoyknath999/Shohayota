@@ -2,6 +2,7 @@ package dunkeydev.shohayota;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -19,6 +20,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.media.AudioManager;
@@ -35,7 +37,9 @@ import android.speech.tts.TextToSpeech;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -69,7 +73,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static CardView EmergencyMode, AppSettings;
+    public static CardView EmergencyMode, AppSettings, ChatBotMode, ManualMode , AboutAppUs;
     private static GpsTracker gpsTracker;
     public static String latitude,longitude;
     private TextView MethodText;
@@ -86,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
         EmergencyMode = findViewById(R.id.emergency_mode);
         AppSettings = findViewById(R.id.app_settings);
+        ChatBotMode = findViewById(R.id.chatbot_mode);
+        ManualMode = findViewById(R.id.manual_mode);
+        AboutAppUs = findViewById(R.id.about_app_us);
         gpsTracker = new GpsTracker(MainActivity.this);
 
         MethodText = findViewById(R.id.method_text);
@@ -96,9 +103,9 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
         boolean mode = sharedPreferences.getBoolean("mode", false);
         if (mode)
-            MethodText.setText("Emergency Mode : On");
+            MethodText.setText("Voice Mode : On");
         else
-            MethodText.setText("Emergency Mode : Off");
+            MethodText.setText("Voice Mode : Off");
 
 
 
@@ -118,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
                                 {
                                     boolean mode = sharedPreferences.getBoolean("mode", false);
                                     if (mode) {
-                                        MethodText.setText("Emergency Mode : Off");
+                                        MethodText.setText("Voice Mode : Off");
                                         editor.putBoolean("mode", false);
                                         stopall();
                                     }
                                     else {
                                         editor.putBoolean("mode", true);
-                                        MethodText.setText("Emergency Mode : On");
+                                        MethodText.setText("Voice Mode : On");
                                     }
                                     editor.commit();
                                 }
@@ -174,7 +181,82 @@ public class MainActivity extends AppCompatActivity {
             }
         }).check();
 
-        checkAccessibilityPermission();
+
+        ChatBotMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,ChatBotActivity.class));
+            }
+        });
+
+        ManualMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
+
+        AboutAppUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,AboutActivity.class));
+            }
+        });
+
+         checkAccessibilityPermission();
+    }
+
+    private void showDialog()
+    {
+        AlertDialog.Builder builder;
+        builder = new AlertDialog.Builder(MainActivity.this);
+        ViewGroup viewGroup = ((Activity) MainActivity.this).findViewById(android.R.id.content);
+
+        View dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_layout_dialog, viewGroup, false);
+
+        AppCompatButton Call, Message;
+        Call = dialogView.findViewById(R.id.manual_call);
+        Message = dialogView.findViewById(R.id.manual_message);
+
+        Call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String emergencyphone = sharedPreferences.getString("emergencyphone","");
+                if (!emergencyphone.isEmpty())
+                {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    callIntent.setData(Uri.parse("tel:"+emergencyphone));
+                    startActivity(callIntent);
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Please set your emergency contact first!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String emergencymessagephone = sharedPreferences.getString("emergencymessagephone","");
+                String emergencymessagetext = sharedPreferences.getString("emergencymessagetext","");
+                String finalmessage = "";
+                if (!emergencymessagetext.isEmpty())
+                    finalmessage = emergencymessagetext.replace("$location","https://maps.google.com/?q="+getLat()+","+getLon());
+
+                if (!emergencymessagephone.isEmpty() && !finalmessage.isEmpty())
+                {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(emergencymessagephone,null,finalmessage,null,null);
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Please set your emergency message text and number!!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setView(dialogView);
+        AlertDialog mDialog = builder.create();
+        mDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mDialog.show();
     }
 
     private void stopall() {

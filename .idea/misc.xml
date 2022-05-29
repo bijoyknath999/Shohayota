@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/drawable-v24/border_outline.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35462962962962963" />
+        <entry key="app/src/main/res/drawable/bg_chat_receive.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/bg_chat_send.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/border_outline.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/custom_btn.xml" value="0.282" />
+        <entry key="app/src/main/res/drawable/custom_edittext.xml" value="0.194" />
+        <entry key="app/src/main/res/layout/activity_about.xml" value="0.3484375" />
+        <entry key="app/src/main/res/layout/activity_chat_bot.xml" value="0.23369565217391305" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.29483695652173914" />
+        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.1765625" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.27445652173913043" />
+        <entry key="app/src/main/res/layout/adapter_message_one.xml" value="0.3484375" />
+        <entry key="app/src/main/res/layout/custom_layout_dialog.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/layout_toolbar_button.xml" value="0.3484375" />
+        <entry key="app/src/main/res/menu/toolbar_menu.xml" value="0.4662576687116564" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.35462962962962963" />
+        <entry key="app/src/main/res/xml/accessibility_service_config.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

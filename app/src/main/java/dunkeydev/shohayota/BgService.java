@@ -260,7 +260,7 @@ public class BgService extends Service implements RecognitionListener {
         }
         if(matches.get(0).contains("police"))
         {
-            if (policephone.isEmpty())
+            if (!policephone.isEmpty())
             {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
